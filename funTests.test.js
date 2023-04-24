@@ -1,6 +1,8 @@
 import { capitalize } from './capitalize';
 import reverseString from './reverseString';
 import calculator from './calculator';
+import caesarCipher from './caesarCipher';
+import analyzeArray from './analyzeArray';
 
 test('word is capitalized', () => {
   expect(capitalize('hello')).toMatch(/^[A-Z]/);
@@ -26,4 +28,19 @@ test('divide 3 by 2 by calculator obj', () => {
 
 test('multiply 5 by 3 with calculator obj', () => {
   expect(calculator.multiply(5, 3)).toBe(15);
+});
+
+test('cipher word correctly', () => {
+  expect(caesarCipher('A?bc!', 1)).toMatch('B?cd!');
+  expect(caesarCipher('zzz!', 2)).toMatch('bbb!');
+  expect(caesarCipher('h,e,l,l,o.', 1)).toMatch('i,f,m,m,p.');
+});
+
+test('analyze array correctly', () => {
+  expect(analyzeArray([1, 8, 3, 4, 2, 6])).toEqual({
+    average: 4,
+    min: 1,
+    max: 8,
+    length: 6,
+  });
 });
